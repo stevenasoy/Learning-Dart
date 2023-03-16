@@ -9,11 +9,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.white,
+        //********* NAME OF THE APP DISPLAYED AT THE TOP *********//////
         appBar: AppBar(
           backgroundColor: Colors.green,
           title: const Text("Flutter Practice"),
         ),
+        //********* END NAME OF THE APP DISPLAYED AT THE TOP *********//////
+
+        //********* IF A BODY IS IN CONTAINER *********//////
         body: Container(
           height: 200,
           width: double.infinity,
@@ -27,6 +31,10 @@ class MyApp extends StatelessWidget {
           child:const Text("Hello! i am inside a container!",
               style: TextStyle(fontSize: 20, color: Colors.white)),
         ),
+
+        //********* END IF A BODY IS IN CONTAINER *********//////
+
+        //********* BUTTON IN THE LOWER PART (+) SIGN *********//////
         floatingActionButton: FloatingActionButton(
           elevation: 10.0,
           child: const Icon(Icons.add),
@@ -34,6 +42,9 @@ class MyApp extends StatelessWidget {
             // action on button press
           },
         ),
+//********* END BUTTON IN THE LOWER PART (+) SIGN *********//////
+
+        //********* DRAWER FROM BESIDE *********//////
         drawer: Drawer(
           child: ListView(
             children: const <Widget>[
@@ -41,14 +52,16 @@ class MyApp extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.green,
                 ),
+                //********* HEAD TITLE FOR THE DRAWER *********//////
                 child: Text(
                   'GeeksforGeeks',
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.white,
                     fontSize: 24,
                   ),
                 ),
               ),
+              //********* ITEMS OR MENU INSIDE THE DRAWER *********//////
               ListTile(
                 title
                     : Text('Item 1'),
@@ -63,6 +76,9 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
+//********* END DRAWER *********//////
+
+        //********* BOTTOM NAV BAR *********//////
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: 0,
             fixedColor: Colors.green,
@@ -79,6 +95,8 @@ class MyApp extends StatelessWidget {
                 label: "Profile",
                 icon: Icon(Icons.account_circle),
               ),
+
+              //////********* END BOTTOM NAV BAR *********//////
             ],
             onTap: (int indexOfItem) {}),
 
