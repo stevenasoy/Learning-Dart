@@ -1,106 +1,117 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const GFGapp());
+//runApp(const GFGapp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class GFGapp extends StatelessWidget {
+  final appTitle = 'HNU MIS (development stage)';
+
+  const GFGapp({Key? key}) : super(key:key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        //********* NAME OF THE APP DISPLAYED AT THE TOP *********//////
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: const Text("Flutter Practice"),
-        ),
-        //********* END NAME OF THE APP DISPLAYED AT THE TOP *********//////
-
-        //********* IF A BODY IS IN CONTAINER *********//////
-        body: Container(
-          height: 200,
-          width: double.infinity,
-          margin: const EdgeInsets.all(20),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(30),
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            border: Border.all(color: Colors.black, width: 3),
-          ),
-          child:const Text("Hello! i am inside a container!",
-              style: TextStyle(fontSize: 20, color: Colors.white)),
-        ),
-
-        //********* END IF A BODY IS IN CONTAINER *********//////
-
-        //********* BUTTON IN THE LOWER PART (+) SIGN *********//////
-        floatingActionButton: FloatingActionButton(
-          elevation: 10.0,
-          child: const Icon(Icons.add),
-          onPressed: () {
-            // action on button press
-          },
-        ),
-//********* END BUTTON IN THE LOWER PART (+) SIGN *********//////
-
-        //********* DRAWER FROM BESIDE *********//////
-        drawer: Drawer(
-          child: ListView(
-            children: const <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                ),
-                //********* HEAD TITLE FOR THE DRAWER *********//////
-                child: Text(
-                  'GeeksforGeeks',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              //********* ITEMS OR MENU INSIDE THE DRAWER *********//////
-              ListTile(
-                title
-                    : Text('Item 1'),
-                leading
-                    : Icon(Icons.people), ),
-              ListTile(
-                title
-                    : Text('Item 2'),
-                leading
-                    : Icon(Icons.mail), ),
-
-            ],
-          ),
-        ),
-//********* END DRAWER *********//////
-
-        //********* BOTTOM NAV BAR *********//////
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: 0,
-            fixedColor: Colors.green,
-            items: const [
-              BottomNavigationBarItem(
-                label: "Home",
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: "Search",
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: "Profile",
-                icon: Icon(Icons.account_circle),
-              ),
-
-              //////********* END BOTTOM NAV BAR *********//////
-            ],
-            onTap: (int indexOfItem) {}),
-
-      ),
+      title: appTitle,
+      home: MyHomePage(title: appTitle),
     );
   }
 }
+
+class MyHomePage extends StatelessWidget {
+  final String title;
+
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title,
+          style: const TextStyle(fontSize: 16),
+        ),
+        backgroundColor: Colors.green,
+      ),
+
+      body: const DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: NetworkImage('https://images.adsttc.com/media/images/55bb/d163/e58e/ce0a/2b00/0002/newsletter/google_lpp_027.jpg'), fit: BoxFit.cover),
+        ),
+        child: Center(
+            child: FlutterLogo(
+              size: 200,
+            )),
+      ),
+
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: Colors.green),
+                accountName: Text(
+                  "Steven Jake Asoy",
+                  style: TextStyle(fontSize: 14.0),
+                ),
+                accountEmail: Text("asoy.steven_jake@hnu.edu.ph"),
+                currentAccountPictureSize: Size.square(50),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Color.fromARGB(255, 165, 255, 137),
+                  child: Text(
+                    "A",
+                    style: TextStyle(fontSize: 30.0, color: Colors.blue),
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text("April 4, 2003"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.book),
+              title: const Text("BS Computer Science - 3"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ], //children
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          fixedColor: Colors.green,
+          items: const [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: "Financials",
+              icon: Icon(Icons.money_rounded),
+            ),
+            BottomNavigationBarItem(
+              label: "Academic",
+              icon: Icon(Icons.book),
+            ),
+
+            //////********* END BOTTOM NAV BAR *********//////
+          ],
+          onTap: (int indexOfItem) {}),
+    );
+  }
+}
+//body: const Center(
+//child: Text(
+//'HMU MIS',
+//style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+// )),
+
