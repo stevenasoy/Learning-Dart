@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 
 void main() => runApp(const GFGapp());
 //runApp(const GFGapp());
@@ -14,6 +15,7 @@ class GFGapp extends StatelessWidget {
     return MaterialApp(
       title: appTitle,
       home: MyHomePage(title: appTitle),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -41,17 +43,19 @@ class MyHomePage extends StatelessWidget {
     backgroundColor: Colors.green,
       ),
 
+      // Main Body //
       body: const DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage('https://images.adsttc.com/media/images/55bb/d163/e58e/ce0a/2b00/0002/newsletter/google_lpp_027.jpg'), opacity: 70, fit: BoxFit.cover),
+              image: AssetImage("assets/images/bg.png"), opacity: 100, fit: BoxFit.cover),
         ),
         child: Center(
             child: FlutterLogo(
-              size: 200,
+              size: 100,
             )),
       ),
 
+      // Drawer //
       drawer: Drawer(
         child: ListView(
           padding: const EdgeInsets.all(0),
@@ -77,6 +81,8 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+
+            // Details inside drawer: Content //
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text("April 4, 2003"),
@@ -95,6 +101,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
 
+      // BOTTOM MENU //
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 0,
           fixedColor: Colors.green,
