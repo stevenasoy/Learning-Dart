@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter/services.dart';
 
 void main() => runApp(const GFGapp());
 //runApp(const GFGapp());
@@ -30,13 +31,20 @@ class MyHomePage extends StatelessWidget {
         title: Text(title,
           style: const TextStyle(fontSize: 16),
         ),
-        backgroundColor: Colors.green,
+          actions: <Widget>[
+            IconButton(
+            icon: const Icon(Icons.comment),
+            tooltip: 'Comment Icon',
+            onPressed: () {},
+          ),
+    ],
+    backgroundColor: Colors.green,
       ),
 
       body: const DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage('https://images.adsttc.com/media/images/55bb/d163/e58e/ce0a/2b00/0002/newsletter/google_lpp_027.jpg'), fit: BoxFit.cover),
+              image: NetworkImage('https://images.adsttc.com/media/images/55bb/d163/e58e/ce0a/2b00/0002/newsletter/google_lpp_027.jpg'), opacity: 70, fit: BoxFit.cover),
         ),
         child: Center(
             child: FlutterLogo(
@@ -86,6 +94,7 @@ class MyHomePage extends StatelessWidget {
           ], //children
         ),
       ),
+
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 0,
           fixedColor: Colors.green,
@@ -109,9 +118,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-//body: const Center(
-//child: Text(
-//'HMU MIS',
-//style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-// )),
-
